@@ -6,7 +6,7 @@ This repository contains SQL queries used to analyze a dataset of Kickstarter pr
 
 The following SQL queries are used to answer different analysis questions based on the Kickstarter dataset:
 
-### 1. 1️⃣ **Which category has the highest success percentage? How many projects have been successful?**
+### 1.  **Which category has the highest success percentage? How many projects have been successful?**
    - **🔍Query:** Calculates the success percentage for each project category and determines the number of successful projects.
    - **🎯Purpose:** Helps identify which categories have the highest success rates.
    
@@ -21,7 +21,7 @@ GROUP BY Category
 ORDER BY success_percentage DESC;
    ```
 
-### 2. **What are the Top 10 projects with a goal over $1,000 USD, had the biggest Goal Completion % (Pledged / Goal)? How much money was pledged?
+### 2. **What are the Top 10 projects with a goal over $1,000 USD, had the biggest Goal Completion % (Pledged / Goal)? How much money was pledged?**
 **
    - **🔍Query:** Identifies the project with the highest goal completion percentage where the goal exceeds $1,000.
    - **🎯Purpose:** Assesses the most successfully funded projects relative to their goal.
