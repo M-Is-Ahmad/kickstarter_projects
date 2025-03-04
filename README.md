@@ -1,14 +1,14 @@
-# Kickstarter Projects Analysis
+# 🚀 Kickstarter Projects Analysis
 
 This repository contains SQL queries used to analyze a dataset of Kickstarter projects. The analysis includes various insights related to project success rates, funding trends, and the impact of backers on project success. The data covers Kickstarter projects from 2009 to 2017.
 
-## Queries Overview
+## 📌Queries Overview
 
 The following SQL queries are used to answer different analysis questions based on the Kickstarter dataset:
 
-### 1. **Which category has the highest success percentage? How many projects have been successful?**
-   - **Query:** Calculates the success percentage for each project category and determines the number of successful projects.
-   - **Purpose:** Helps identify which categories have the highest success rates.
+### 1. 1️⃣ **Which category has the highest success percentage? How many projects have been successful?**
+   - **🔍Query:** Calculates the success percentage for each project category and determines the number of successful projects.
+   - **🎯Purpose:** Helps identify which categories have the highest success rates.
    
 ```sql
 SELECT 
@@ -23,8 +23,8 @@ ORDER BY success_percentage DESC;
 
 ### 2. **What are the Top 10 projects with a goal over $1,000 USD, had the biggest Goal Completion % (Pledged / Goal)? How much money was pledged?
 **
-   - **Query:** Identifies the project with the highest goal completion percentage where the goal exceeds $1,000.
-   - **Purpose:** Assesses the most successfully funded projects relative to their goal.
+   - **🔍Query:** Identifies the project with the highest goal completion percentage where the goal exceeds $1,000.
+   - **🎯Purpose:** Assesses the most successfully funded projects relative to their goal.
 
 ```sql
 SELECT 
@@ -39,8 +39,8 @@ LIMIT 10;
 ```
 
 ### 3. **What are the trends in the success rates of Kickstarter projects over the years?**
-   - **Query:** Analyzes success rates for Kickstarter projects by year.
-   - **Purpose:** Helps to identify patterns or trends in project success over time.
+   - **🔍Query:** Analyzes success rates for Kickstarter projects by year.
+   - **🎯Purpose:** Helps to identify patterns or trends in project success over time.
 
 ```sql
 SELECT 
@@ -54,8 +54,8 @@ ORDER BY year;
 ```
 
 ### 4. **which categories (subcategories) tend to have the highest success rates?**
-   - **Query:** Calculates the success rate for each category or subcategory and helps investors determine which types of projects are most likely to succeed.
-   - **Purpose:** Provides guidance for investors on which project categories show the highest success rates.
+   - **🔍Query:** Calculates the success rate for each category or subcategory and helps investors determine which types of projects are most likely to succeed.
+   - **🎯Purpose:** Provides guidance for investors on which project categories show the highest success rates.
 
 ```sql
 SELECT 
@@ -70,8 +70,8 @@ LIMIT 10;
 ```
 
 ### 5. **How do funding success rates differ between different years (2009-2017)?**
-   - **Query:** Analyzes how success rates vary across different years.
-   - **Purpose:** Helps understand how funding success rates change over time.
+   - **🔍Query:** Analyzes how success rates vary across different years.
+   - **🎯Purpose:** Helps understand how funding success rates change over time.
 
 ```sql
 SELECT 
@@ -86,8 +86,8 @@ ORDER BY year;
 ```
 
 ### 6. **What is the correlation between the number of backers and project success?**
-   - **Query:** Compares success rates based on different ranges of backers.
-   - **Purpose:** Identifies whether the number of backers correlates with project success.
+   - **🔍Query:** Compares success rates based on different ranges of backers.
+   - **🎯Purpose:** Identifies whether the number of backers correlates with project success.
 
 ```sql
 SELECT 
@@ -109,8 +109,8 @@ ORDER BY success_rate;
 ```
 
 ### 7. **What is the average pledge per backer across different categories?**
-   - **Query:** Calculates the average pledge per backer for each project category.
-   - **Purpose:** Analyzes how different categories perform in terms of average pledge per backer.
+   - **🔍Query:** Calculates the average pledge per backer for each project category.
+   - **🎯Purpose:** Analyzes how different categories perform in terms of average pledge per backer.
 
 ```sql
 SELECT 
@@ -124,8 +124,8 @@ GROUP BY Category
 ORDER BY avg_pledge_per_backer DESC;
 ```
 ### 8. **What are the top 5 countries with the highest number of successful projects?**
-   - **Query:** Lists the top 10 countries with the highest number of successful projects.
-   - **Purpose:** Helps identify which countries are most successful on Kickstarter.
+   - **🔍Query:** Lists the top 10 countries with the highest number of successful projects.
+   - **🎯Purpose:** Helps identify which countries are most successful on Kickstarter.
 
 ```sql
 SELECT 
@@ -137,21 +137,21 @@ GROUP BY Country
 ORDER BY successful_projects DESC
 LIMIT 5;
 ```
-## Conclusion
+## 🎯Conclusion
 
 This analysis provides valuable insights into Kickstarter project success based on categories, goals, backers, and time periods. By identifying trends in funding success, we can better understand which factors contribute to project success. Key findings show how the success rate varies by category, the importance of backer support, and the funding trends over the years. This can help investors make informed decisions about which projects to support and guide creators in improving their chances of success.
 
-## Target Audience
+## 🎯Target Audience
 
 This analysis is aimed at:
 
-- **Investors** looking to understand trends and identify high-success categories for future funding.
-- **Kickstarter project creators** who want to improve their project's chances of success by learning from historical data.
-- **Researchers** exploring crowdfunding platforms and their impacts over time.
+- **📈Investors** looking to understand trends and identify high-success categories for future funding.
+- **📢Kickstarter project creators** who want to improve their project's chances of success by learning from historical data.
+- **📚Researchers** exploring crowdfunding platforms and their impacts over time.
 
 This analysis is useful for anyone seeking to make informed decisions about participating in or analyzing Kickstarter campaigns.
 
-## Additional Notes
+## 📌Additional Notes
 
 - The analysis was conducted using [SQLite](https://sqliteviz.com/), which provided an efficient platform for querying and analyzing the dataset.
 - The source of the dataset is from [Maven Analytics](https://mavenanalytics.io/). Special thanks to Maven Analytics for providing this valuable resource for data analysis and insight generation.
