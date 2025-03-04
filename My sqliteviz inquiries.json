@@ -1,0 +1,229 @@
+{
+    "version": 2,
+    "inquiries": [
+        {
+            "id": "cHfcyhg4IhZVRhDNsbvrc",
+            "query": "-- First Query: Which category has the highest success percentage? and How many projects have been successful?\n\nSELECT \n    Category, \n    COUNT(*) AS total_projects,\n    SUM(CASE WHEN State = 'Successful' THEN 1 ELSE 0 END) AS successful_projects,\n    ROUND((SUM(CASE WHEN State = 'Successful' THEN 1 ELSE 0 END) * 100.0) / COUNT(*), 2) AS success_percentage\nFROM Kickstarter_projects\nGROUP BY Category\nORDER BY success_percentage DESC;\n\n\n",
+            "viewType": "chart",
+            "viewOptions": {
+                "data": [],
+                "layout": {
+                    "xaxis": {
+                        "range": [
+                            -1,
+                            6
+                        ],
+                        "autorange": true
+                    },
+                    "yaxis": {
+                        "range": [
+                            -1,
+                            4
+                        ],
+                        "autorange": true
+                    },
+                    "autosize": true
+                },
+                "frames": []
+            },
+            "name": "First_Query ",
+            "createdAt": "2025-03-04T11:39:39.836Z"
+        },
+        {
+            "id": "HALszed16ZsiQ10puDDuo",
+            "query": "-- What are the Top 10 projects with a goal over $1,000 USD, had the biggest Goal Completion % (Pledged / Goal)? How much money was pledged?\n\n\nSELECT \n    Name, \n    Goal, \n    Pledged, \n    ROUND (((Pledged) / Goal),2) AS goal_completion_percentage\nFROM Kickstarter_projects\nWHERE Goal > 1000\nORDER BY goal_completion_percentage DESC\nLIMIT 10;",
+            "viewType": "chart",
+            "viewOptions": {
+                "data": [],
+                "layout": {
+                    "xaxis": {
+                        "range": [
+                            -1,
+                            6
+                        ],
+                        "autorange": true
+                    },
+                    "yaxis": {
+                        "range": [
+                            -1,
+                            4
+                        ],
+                        "autorange": true
+                    },
+                    "autosize": true
+                },
+                "frames": []
+            },
+            "name": "Second_Query",
+            "createdAt": "2025-03-04T11:45:19.432Z"
+        },
+        {
+            "id": "D9_furm3HO2FiXdup13iQ",
+            "query": "-- What are the trends in the success rates of Kickstarter projects over the years?\nSELECT \n    strftime('%Y', Launched) AS year,  -- Extract year from the Launched date\n    COUNT(*) AS total_projects,        -- Total number of projects launched in that year\n    SUM(CASE WHEN State = 'Successful' THEN 1 ELSE 0 END) AS successful_projects,  -- Count successful projects\n    ROUND(((SUM(CASE WHEN State = 'Successful' THEN 1 ELSE 0 END) * 100.0) / COUNT(*)),2) AS success_rate  -- Success rate\nFROM Kickstarter_projects\nGROUP BY year\nORDER BY year;\n",
+            "viewType": "chart",
+            "viewOptions": {
+                "data": [],
+                "layout": {
+                    "xaxis": {
+                        "range": [
+                            -1,
+                            6
+                        ],
+                        "autorange": true
+                    },
+                    "yaxis": {
+                        "range": [
+                            -1,
+                            4
+                        ],
+                        "autorange": true
+                    },
+                    "autosize": true
+                },
+                "frames": []
+            },
+            "name": "Query_3",
+            "createdAt": "2025-03-04T11:50:18.841Z"
+        },
+        {
+            "id": "Sc52qzmXu1lIl7WPTHh2O",
+            "query": "-- which categories (subcategories) tend to have the highest success rates.\nSELECT \n    Category, Subcategory,\n    COUNT(*) AS total_projects,\n    SUM(CASE WHEN State = 'Successful' THEN 1 ELSE 0 END) AS successful_projects,\n    ROUND((SUM(CASE WHEN State = 'Successful' THEN 1 ELSE 0 END) * 100.0) / COUNT(*), 2) AS success_percentage\nFROM Kickstarter_projects\nGROUP BY Subcategory\nORDER BY success_percentage DESC\nLIMIT 10\n\n",
+            "viewType": "chart",
+            "viewOptions": {
+                "data": [],
+                "layout": {
+                    "xaxis": {
+                        "range": [
+                            -1,
+                            6
+                        ],
+                        "autorange": true
+                    },
+                    "yaxis": {
+                        "range": [
+                            -1,
+                            4
+                        ],
+                        "autorange": true
+                    },
+                    "autosize": true
+                },
+                "frames": []
+            },
+            "name": "Query_4",
+            "createdAt": "2025-03-04T11:59:27.908Z"
+        },
+        {
+            "id": "lNvcIydRxgQd3DpgJUYb2",
+            "query": "-- How do funding success rates differ between different years (2009-2017)?\n\nSELECT \n    strftime('%Y', Launched) AS year,  -- Extract year from the Launched date\n    COUNT(*) AS total_projects,        -- Total number of projects launched in that year\n    SUM(CASE WHEN State = 'Successful' THEN 1 ELSE 0 END) AS successful_projects,  -- Count successful projects\n    ROUND((SUM(CASE WHEN State = 'Successful' THEN 1 ELSE 0 END) * 100.0) / COUNT(*), 2) AS success_rate  -- Rounded success rate\nFROM Kickstarter_projects\nWHERE strftime('%Y', Launched) BETWEEN '2009' AND '2017'  -- Filter for years 2009-2017\nGROUP BY year\nORDER BY year;\n",
+            "viewType": "chart",
+            "viewOptions": {
+                "data": [],
+                "layout": {
+                    "xaxis": {
+                        "range": [
+                            -1,
+                            6
+                        ],
+                        "autorange": true
+                    },
+                    "yaxis": {
+                        "range": [
+                            -1,
+                            4
+                        ],
+                        "autorange": true
+                    },
+                    "autosize": true
+                },
+                "frames": []
+            },
+            "name": "Query_5",
+            "createdAt": "2025-03-04T12:02:30.378Z"
+        },
+        {
+            "id": "Eml5m1jpCk8ZnnNAevdi8",
+            "query": "-- What is the correlation between the number of backers and project success?\nSELECT \n    CASE \n        WHEN Backers BETWEEN 0 AND 10 THEN '0-10'\n        WHEN Backers BETWEEN 11 AND 100 THEN '11-100'\n        WHEN Backers BETWEEN 101 AND 500 THEN '101-500'\n        WHEN Backers BETWEEN 501 AND 1000 THEN '501-1000'\n        WHEN Backers BETWEEN 1001 AND 5000 THEN '1001-5000'\n        WHEN Backers > 5000 THEN '5000+'\n        ELSE 'No Backers' \n    END AS backer_range,\n    COUNT(*) AS total_projects,\n    SUM(CASE WHEN State = 'Successful' THEN 1 ELSE 0 END) AS successful_projects,\n    ROUND((SUM(CASE WHEN State = 'Successful' THEN 1 ELSE 0 END) * 100.0) / COUNT(*), 2) AS success_rate\nFROM Kickstarter_projects\nGROUP BY backer_range\nORDER BY success_rate;\n",
+            "viewType": "chart",
+            "viewOptions": {
+                "data": [],
+                "layout": {
+                    "xaxis": {
+                        "range": [
+                            -1,
+                            6
+                        ],
+                        "autorange": true
+                    },
+                    "yaxis": {
+                        "range": [
+                            -1,
+                            4
+                        ],
+                        "autorange": true
+                    },
+                    "autosize": true
+                },
+                "frames": []
+            },
+            "name": "Query_6",
+            "createdAt": "2025-03-04T12:04:58.477Z"
+        },
+        {
+            "id": "CEyAAZgO44rmAoLL14Nfz",
+            "query": "-- What is the average pledge per backer across different categories?\nSELECT \n    Category,\n    SUM(Pledged) AS total_pledged,\n    SUM(Backers) AS total_backers,\n    ROUND(SUM(Pledged) * 1.0 / SUM(Backers), 2) AS avg_pledge_per_backer\nFROM Kickstarter_projects\nWHERE Backers > 0  -- To avoid division by zero\nGROUP BY Category\nORDER BY avg_pledge_per_backer DESC;\n",
+            "viewType": "chart",
+            "viewOptions": {
+                "data": [],
+                "layout": {
+                    "xaxis": {
+                        "range": [
+                            -1,
+                            6
+                        ],
+                        "autorange": true
+                    },
+                    "yaxis": {
+                        "range": [
+                            -1,
+                            4
+                        ],
+                        "autorange": true
+                    },
+                    "autosize": true
+                },
+                "frames": []
+            },
+            "name": "Query_7",
+            "createdAt": "2025-03-04T12:07:17.386Z"
+        },
+        {
+            "id": "GIUjGbtqQQ2ZZZZsQ06oN",
+            "query": "-- What are the top 5 countries with the highest number of successful projects?\n\nSELECT \n    Country,\n    COUNT(*) AS successful_projects\nFROM Kickstarter_projects\nWHERE State = 'Successful'  -- Filter for successful projects\nGROUP BY Country\nORDER BY successful_projects DESC\nLIMIT 5;\n",
+            "viewType": "chart",
+            "viewOptions": {
+                "data": [],
+                "layout": {
+                    "xaxis": {
+                        "range": [
+                            -1,
+                            6
+                        ],
+                        "autorange": true
+                    },
+                    "yaxis": {
+                        "range": [
+                            -1,
+                            4
+                        ],
+                        "autorange": true
+                    },
+                    "autosize": true
+                },
+                "frames": []
+            },
+            "name": "Query_8",
+            "createdAt": "2025-03-04T12:09:29.563Z"
+        }
+    ]
+}
